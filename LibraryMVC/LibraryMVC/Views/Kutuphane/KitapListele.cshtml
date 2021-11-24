@@ -1,0 +1,75 @@
+﻿@model IEnumerable<LibraryMVC.Models.Kitap>
+@{
+    ViewBag.Title = "KitapListele";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Kitap Listesi</h2>
+<table class="table table-striped">
+
+    @using (Html.BeginForm("KitapAra", "Kutuphane"))
+    {
+        <div style="width: 406px;margin:auto">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="exampleInputName2">Aranacak Kitap:</label>
+                    @Html.TextBox("KitapAdi", null, new { @class = "form-control" })
+                </div>
+                <div style="margin:auto;position:relative;width:200px">
+                    <input class="btn btn-default" type="submit" value="BUL" />
+                </div>
+            </form>
+        </div>
+    }
+    <br />
+
+    <thead>
+        <tr>
+            <th>Kitap Adı</th>
+            <th>Kitap Yazarı</th>
+            <th>Açıklama</th>
+            <th>Baskı Yılı</th>
+            <th>Eklenme Tarihi</th>
+            <th>Yayınevi</th>
+            <th>Türü</th>
+            <th>Stok Adedi</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.IsActive == true)
+            {
+                <tr>
+                    <td>@item.KitapAdi</td>
+                    <td>@item.KitapYazari</td>
+                    <td>@item.Aciklama</td>
+                    <td>@item.BaskiYil</td>
+                    <td>@item.EklenmeTarihi</td>
+                    <td>@item.YayinEvi</td>
+                    <td>@item.Tur.TurAdi</td>
+                    <td>@item.StokDurumu</td>
+                    <td>@Html.ActionLink("SİL", "KitapSil", new { id = item.Id }, new { @class = "btn btn-danger" })</td>
+                    <td>@Html.ActionLink("GÜNCELLE", "KitapGuncelle", new { id = item.Id }, new { @class = "btn btn-success" })</td>
+                    <td>
+                        @if (item.StokDurumu == 0)
+                        {
+                            <fieldset disabled>
+                                @Html.ActionLink("Kitap Kalmamıştır", "OduncVer", new { id = item.Id }, new { @class = "btn btn-danger" })
+                            </fieldset>
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Ödünç Ver", "OduncVer", new { id = item.Id }, new { @class = "btn btn-primary" })
+                        }
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>

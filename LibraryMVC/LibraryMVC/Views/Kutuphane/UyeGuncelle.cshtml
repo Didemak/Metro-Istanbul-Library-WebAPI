@@ -1,0 +1,73 @@
+﻿@model LibraryMVC.Models.Uye
+@{
+    ViewBag.Title = "UyeGuncelle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UyeGuncelle</h2>
+
+
+@using (Html.BeginForm("UyeGuncelle", "Kutuphane", FormMethod.Post))
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label for="inputEmail3" class="control-label col-md-3">Sicil Numarası</label>
+            <div class="col-md-9">
+                @Html.TextBox("SicilNo", null, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="control-label col-md-3">Üye Adı</label>
+            <div class="col-md-9">
+                @Html.TextBox("UyeAdi", null, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="control-label col-md-3">Üye Soyadı</label>
+            <div class="col-md-9">
+                @Html.TextBox("UyeSoyadi", null, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="control-label col-md-3">Telefon Numarası</label>
+            <div class="col-md-9">
+                @Html.TextBox("TelefonNo", null, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="control-label col-md-3">E-posta</label>
+            <div class="col-md-9">
+                @Html.TextBox("Email", null, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="control-label col-md-3">Cinsiyet</label>
+            <div class="col-md-9">
+                @Html.DropDownList("Cinsiyet",
+          new List<SelectListItem> {
+                     new SelectListItem {
+                        Text="Erkek",
+                        Value="Erkek",
+                     },
+                     new SelectListItem {
+                        Text="Kadın",
+                        Value="Kadın",
+
+                     },
+                      new SelectListItem {
+                        Text="Diğer",
+                        Value="Diğer",
+
+                     },
+          }, "Cinsiyet Seçiniz", new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+                <button type="submit" class="btn btn-default">Kaydet</button>
+            </div>
+        </div>
+    </div>
+}

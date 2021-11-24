@@ -1,0 +1,35 @@
+﻿@model List<LibraryMVC.Models.Odunc>
+@{
+    ViewBag.Title = "OduncListele";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kitap Ödünç Durumları</h2>
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th>Kitap Adı</th>
+            <th>Sicil Numarası</th>
+            <th>Ödünç Alan Kişi</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.IsActive == true)
+            {
+                <tr>
+                    <td>@item.Kitap.KitapAdi</td>
+                    <td>@item.Uye.SicilNo</td>
+                    <td>@item.Uye.UyeAdi @item.Uye.UyeSoyadi</td>
+                    <td>@Html.ActionLink("İade Et", "KitapIade", new { id = item.Id }, new { @class = "btn btn-success" })</td>
+                </tr>
+            }
+               
+        }
+
+    </tbody>
+</table>
+

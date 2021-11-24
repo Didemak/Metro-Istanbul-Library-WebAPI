@@ -1,0 +1,112 @@
+﻿@model LibraryMVC.Models.Kitap
+@{
+    ViewBag.Title = "KitapGuncelle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kitap Güncelle</h2>
+
+
+@using (Html.BeginForm("KitapGuncelle", "Kutuphane", FormMethod.Post))
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label for="inputEmail3" class="control-label col-md-3">Kitap Adı</label>
+            <div class="col-md-9">
+                @Html.TextBox("KitapAdi", null, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="control-label col-md-3">Kitap Yazarı</label>
+            <div class="col-md-9">
+                @Html.TextBox("KitapYazari", null, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="control-label col-md-3">Açıklama</label>
+            <div class="col-md-9">
+                @Html.TextArea("Aciklama", null, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="control-label col-md-3">Baskı Yılı</label>
+            <div class="col-md-9">
+                @Html.TextBox("BaskiYil", null, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="control-label col-md-3">Yayınevi</label>
+            <div class="col-md-9">
+                @Html.TextBox("YayinEvi", null, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="control-label col-md-3">Kitap Adedi</label>
+            <div class="col-md-9">
+                @Html.TextBox("StokDurumu", null, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="control-label col-md-3">Kitap Türü</label>
+            <div class="col-md-9">
+
+                @Html.DropDownListFor(x => x.TurID, (List<SelectListItem>)ViewBag.degerlerim, new { @class = "form-control" })
+
+                @*@Html.DropDownList("Tur",
+                                new List<SelectListItem> {
+                                     new SelectListItem {
+                                        Text="Roman",
+                                        Value="1",
+                                        Selected = true
+
+                                     },
+                                     new SelectListItem {
+                                        Text="Şiir",
+                                        Value="2",
+
+
+                                     },
+                                      new SelectListItem {
+                                        Text="Anı Kitapları",
+                                        Value="3",
+
+                                     },
+                                       new SelectListItem {
+                                        Text="Gezi",
+                                        Value="4",
+
+                                     },
+                                        new SelectListItem {
+                                        Text="Biyografi",
+                                        Value="5",
+
+                                     },
+                                         new SelectListItem {
+                                        Text="Bilgi",
+                                        Value="6",
+
+                                     },
+                                          new SelectListItem {
+                                        Text="Din",
+                                        Value="7",
+
+                                     },
+                                           new SelectListItem {
+                                        Text="Çocuk",
+                                        Value="8",
+
+                                     },
+
+                    }, "Tür Seçiniz", new { @class = "form-control" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+                <button type="submit" class="btn btn-default">Kaydet</button>
+            </div>
+        </div>
+    </div>
+}
+

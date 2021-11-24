@@ -1,0 +1,60 @@
+﻿@model IEnumerable<LibraryMVC.Models.Uye>
+@{
+    ViewBag.Title = "UyeListele";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Üyeler</h2>
+
+<table class="table table-striped">
+
+    @using (Html.BeginForm("UyeAra", "Kutuphane"))
+    {
+        <div style="width: 406px;margin:auto">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="exampleInputName2">Üye ismini giriniz:</label>
+                    @Html.TextBox("UyeAdi", null, new { @class = "form-control" })
+                </div>
+                <div style="margin:auto;position:relative;width:200px">
+                    <input class="btn btn-default" type="submit" value="BUL" />
+                </div>
+            </form>
+        </div>
+    }
+    <br />
+    <thead>
+        <tr>
+            <th>Sicil Numarası</th>
+            <th>İsim</th>
+            <th>Soyisim</th>
+            <th>Telefon Numarası</th>
+            <th>E-posta</th>
+            <th>Cinsiyet</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.IsActive == true)
+        {
+        <tr>
+            <td>@item.SicilNo</td>
+            <td>@item.UyeAdi</td>
+            <td>@item.UyeSoyadi</td>
+            <td>@item.TelefonNo</td>
+            <td>@item.Email</td>
+            <td>@item.Cinsiyet</td>
+            <td>@Html.ActionLink("SİL", "UyeSil", new { Id = item.Id }, new { @class = "btn btn-danger" })</td>
+            <td>@Html.ActionLink("GÜNCELLE", "UyeGuncelle", new { id = item.Id }, new { @class = "btn btn-success" })</td>
+        </tr>
+    }
+
+}
+
+    </tbody>
+</table>
+
+
